@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-size: 20px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+input {
+  border: none;
+  margin-right: 15px;
+}
+input:focus {
+  border: none;
+}
+.progress {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 30px;
+}
+@media (max-width: 768px) {
+  .progress {
+  flex-direction: column;
+  gap: 20px;
+  }
+}
+.progress > * {
+  flex: 0 0 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.progress__circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: conic-gradient( 
+    rgb(255, 213, 23) 0, transparent 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.progress__circle.rotate {
+  animation: rotate linear 5s infinite;
+}
+.progress__body {
+  width: 180px;
+  height: 180px;
+  background-color: white;
+  border-radius: 50%;
+}
+.progress__controls {
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 50px;
+}
+.progress__value {
+  width: 45px;
+  height: 30px;
+  border-radius: 15px;
+  border: 1px solid black;
+  text-align: center;
+}
+.progress__input-wrapper {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+.progress__animate, .progress__hide {
+  appearance: none;
+  position: relative;
+}
+.progress__animate::before, .progress__hide::before {
+  content: '';
+  display: block;
+  width: 45px;
+  height: 30px;
+  background-color: rgb(51, 51, 51);
+  border-radius: 15px;
+  position: relative;
+  left: 0;
+  top: 0;
+  border: 1px solid #000;
+}
+.progress__animate::after, .progress__hide::after {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-color: #ccc;
+  border-radius: 15px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 1px solid #000;
+  transition: left .2s linear;
+}
+.progress__animate:checked::after, .progress__hide:checked::after {
+  left: 15px;
+  background-color: #fff;
+  border: 1px solid rgb(173, 255, 80);
+}
+.progress__animate:checked::before, .progress__hide:checked::before {
+  background-color: rgb(173, 255, 80);
+  border: 1px solid rgb(173, 255, 80);
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
